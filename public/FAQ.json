@@ -1,0 +1,79 @@
+{
+    "faqs": [
+        {
+            "id": 1,
+            "question": "What services do you offer?",
+            "answer": "We offer comprehensive printing and imaging services including: Photocopy (color & B/W), Computer Printouts, Thesis Printing & Binding, Wedding & Event Cards, Custom Printing on Mugs, Plates, Tiles, Fabric, T-Shirts, Large Format Printing, Scanning Services, Educational Materials, and much more. We've been serving since 1987!"
+        },
+        {
+            "id": 2,
+            "question": "What are your business hours?",
+            "answer": "We are open Monday to Saturday from 9:00 AM to 8:00 PM. Closed on Sundays and public holidays. For urgent orders, please contact us at 0300-4251833."
+        },
+        {
+            "id": 3,
+            "question": "Where are you located?",
+            "answer": "We are located at Muslim Town Mor, Beside Jamia Asharfia, 147-Ferozepur Road, Lahore. You can easily find us near the main road with ample parking available."
+        },
+        {
+            "id": 4,
+            "question": "How can I place an order?",
+            "answer": "You can place orders in three ways: 1) Visit our shop directly, 2) Contact us via WhatsApp at 0300-4251833, or 3) Email us at infoscholars@yahoo.com with your requirements. For online orders, you can create an account, upload your files, and we'll deliver to your location."
+        },
+        {
+            "id": 5,
+            "question": "Do you offer delivery services?",
+            "answer": "Yes! We offer delivery services within Lahore and surrounding areas. Delivery charges depend on the location and order size. Contact us for specific delivery rates."
+        },
+        {
+            "id": 6,
+            "question": "What types of binding do you offer?",
+            "answer": "We offer multiple binding options: Loop Binding, Spiral Binding, Ring Binding, Tape Binding, Simple Hard Binding, Cover Print Binding, Embossing Binding, and Paper Binding. Perfect for thesis, reports, and documents."
+        },
+        {
+            "id": 7,
+            "question": "Can you print on custom materials?",
+            "answer": "Absolutely! We specialize in printing on various materials including mugs, plates, tiles, fabric, cushions, pillows, leather accessories, key chains, t-shirts, caps, and more. Bring your design or we can help create one!"
+        },
+        {
+            "id": 8,
+            "question": "Do you have educational materials available?",
+            "answer": "Yes, we have extensive educational materials for Master Level (M.Sc Mathematics, M.A Library Sciences, M.Sc Statistics, M.A Islamiat), B.Sc, F.Sc, O-Levels, and A-Levels including question papers, marking schemes, and notes."
+        },
+        {
+            "id": 9,
+            "question": "What is your pricing?",
+            "answer": "Our pricing is very competitive and varies by service. For detailed pricing, please visit our Rates page or contact us directly. We offer special discounts for bulk orders and regular customers."
+        },
+        {
+            "id": 10,
+            "question": "Can you handle large format printing?",
+            "answer": "Yes! We have advanced equipment for large format printing up to 44 inches width and 200 inches long. Perfect for CAD drawings, design posters, maps, banners, and signage."
+        },
+        {
+            "id": 11,
+            "question": "Do you offer scanning and archiving services?",
+            "answer": "Yes, we provide professional scanning services, archiving and indexing services, preservation solutions, and data management. We can digitize your documents for long-term storage."
+        },
+        {
+            "id": 12,
+            "question": "Can you create custom wedding cards?",
+            "answer": "Absolutely! We specialize in custom wedding cards, birthday cards, and event invitations. We can work with your design or create beautiful custom designs for your special occasion."
+        },
+        {
+            "id": 13,
+            "question": "What payment methods do you accept?",
+            "answer": "We accept cash, bank transfers, and online payments. For account holders, you can recharge your account and place orders online for added convenience."
+        },
+        {
+            "id": 14,
+            "question": "How long does it take to complete an order?",
+            "answer": "Turnaround time depends on the type and size of the order. Simple photocopies and printouts are usually same-day. Custom printing, binding, and large orders may take 2-5 business days. We also offer rush services for urgent orders."
+        },
+        {
+            "id": 15,
+            "question": "Do you work with businesses and institutions?",
+            "answer": "Yes! We proudly serve major institutions including University of Punjab, LUMS, ITU, UHS, WAPDA, National Bank, and many more. We offer special corporate packages and dedicated account management for institutional clients."
+        }
+    ]
+}
