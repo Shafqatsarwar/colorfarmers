@@ -1,0 +1,336 @@
+colorfarmers project:
+
+# Make the following changes
+
+##  Step 1
+1. We have tailwind css in this app already, make a modern light theme template which we could use at any place or page and can make changes to this theme at any time
+
+## Step 2
+1.  We have the following menu items. "Home, About Us, Start Today, Rates, Reviews, Contact US" Split them in Navbar and footer for best modern standards
+
+## Step 3
+Add a Navbar to the application with he following features
+1. It should be sticky on the top
+2. It should have logo on the left
+3. The navbar menu should be taken from step2
+4. All these menu items should navigate to their respective page with placeholder content
+5. It should be fully responsive on all the screen sizes,
+6. with a stcky chatbot button bottom right side
+## Step 4
+Add an appropriate footer modern Footer with appropriate menu items
+
+## Step 5
+1. we will be adding a chatbot in our app, so place a sticky chat button on the right bottom, which on click shows a popover saying feature awaiting in a compact view both desktop and mobile.
+2. we use a Gemini powered chatbot in modern look with greeting message and acces to FAQ file in public folder.
+3. Add logo from publice folder Logo.jpg in web ui with comact size and modern look
+4. recmonded colours are light green, purple and blue. but you can specify for a modern look by you.
+
+### Step 6
+after doing and testing we move forward to design our Web UI with maximum details about our services"Home, About Us, Start Today, Rates, Reviews, Contact US"
+
+"THESIS POINT
+Printout
+Copy
+Binding
+Composing & Formatting
+PDF Conversion and CD Writing
+INVITES
+Wedding Cards
+Birthday Cards
+Event Cards
+GIVE ALWAYS & GIFTS
+Souvenirs & Memories
+Printing and Advertising
+Mugs, Plates
+Tiles
+Fabric
+Cushion and Pillow
+Leather Accessaries
+Key Chains
+Shirts (T, Round neck, Dress, Uniform )
+Caps
+Uppers
+Coats
+COPY SHOP
+Photocopy (color, Black And White)
+Computer Printouts
+Large Format Printing, Copy And Scanning
+Cad, Design And Posters, Maps
+44 Inches Width To 200 Inches Long
+Scanning Services
+Archiving And Index Services
+Preservation Solutions
+Data Management
+Bindings
+Loop Binding
+Spiral Binding
+Ring Binding
+Tape Binding
+Simple Hard Binding
+Cover Print Binding
+Embossing Binding
+Paper Binding
+EDUCATION MATERIAL
+Master Level
+M.Sc Mathematics
+M.A Library and Information Sciences
+M.Sc Statistics
+M.Sc Sports Sciences and Physical Education
+M.A Islamiat
+B.Sc Mathematics
+F.Sc Mathematics
+O-Levels , A-Levels
+Question Paper, Marking Schemes, Notes
+ONLINE PRINTING SERVICES
+Create Account
+Recharge Account
+Upload File & Place Order
+Delivery
+Customized Shields And Trophies
+Crystal, Glass, Acrylic And Wooden
+Certificates And Photo Frames
+Desktop Items
+Wall Mount Items
+Offset and Digital Print Solutions
+Outdoor / Indore Printing
+Letterhead, Name Cards
+Brochures, Flyers, Posters
+Buntings,Invoice / Bill Books
+Indexes, Customized Stationary
+Hand Bags, Envelopes
+Flex Printing
+Signage printing
+Standee’s
+Banner
+Vinyl Printing
+One Vision
+Transparent Printing
+Canvas Printing"
+
+- Some more details to adjust in our project:
+
+"We are providing photocopy, computer printing & digital imaging services to commercial as well as public sector. We have the latest models of high speed digital laser photocopiers, Printers, Scanners & variety of supplies. We have comprehensive solutions for your institution. If you give us opportunity to provide related services then we assure you the quality of work in time.
+
+
+Hereunder we are pleased to submit you a brief company profile required for our company’s evaluation.
+
+
+The following documents are attached herewith.
+
+
+1. Company Brief
+
+2. Company Introduction
+
+3. List of Valuable Clients & Credits
+
+
+
+Thanking you,
+
+
+
+Regards,
+
+
+
+
+For Scholars Photostat Centre
+
+
+
+Mujahid Shabbir
+
+
+
+
+
+Scholars Photostat Centre
+
+
+
+
+We are serving the Nation since 1987. We are specialized in photocopy, imaging, office equipments & supplies. We believe on the quality of service, equipments and quality of our product we have. Our existing setup if equipped with latest copiers and image processing units. We also have specialty in data entry and management services. Perfection of work, manipulation and idea generation is our specialty.
+
+
+For every phase of the document lifecycle - from input to archive – SPC offers best-in-class products and services to enhance efficiency. We use a consultative approach - first understanding customer needs, then applying the appropriate hardware, software and services to implement a streamlined document workflow.
+
+We have the following facilities.
+
+
+Photocopy & Printing:
+
+All types of Photocopy and computer printouts (Digital, Powder, Colour Laser), Maps etc.
+
+
+Digitization and imaging:
+
+Latest solution to convert you paper environment into digitized form (Paperless).
+
+
+Office Equipment:
+
+Photocopiers, Printers, Scanners, MFP’s & Facsimiles,
+
+
+Books & Stationary:
+
+Imported & Local Books, Journals, All types of papers & office stationary.
+
+
+General Order Supply & Contractors:
+
+All type of routine and specialties products, paper, consumables and services.
+
+
+SI CLIENTS
+
+
+SI is proudly working with following organizations:
+
+Ø UNIVERSITY OF THE PUNJAB
+
+v Institute of Geology
+
+v Institute of Chemistry
+
+v Department of History
+
+v Institute of Biochemistry
+
+v Department of Archeology
+
+v Department of Mathematics
+
+v Hailey College of Commerce
+
+v University College of Pharmacy
+
+v Institute of Environment Sciences
+
+v Department of Library and Information Sciences (DLIS)
+
+v Institute of Business and Information Technology (IBIT)
+
+Ø PITAC
+
+Ø PCSIR Labs
+
+Ø Dalda Foods
+
+Ø IQRA University
+
+Ø Preston University
+
+Ø Innovative Solutions
+
+Ø Queen Marry College
+
+Ø The Educators Schools
+
+Ø Meargan Maiz Product
+
+Ø University of Education
+
+Ø Banu Mukhtar (Pvt) Ltd.
+
+Ø National Bank of Pakistan
+
+Ø Punjab College of Commerce
+
+Ø Al-Syed Institute of Commerce
+
+Ø University of Health Sciences (UHS)
+
+Ø PepsiCola International (PVT) Pakistan
+
+Ø Information Technology University (ITU)
+
+
+
+
+Ø Acha Foods
+
+Ø Haleeb Foods
+
+Ø Water 2000 INc
+
+Ø Jamia Asharfia
+
+Ø Qarshi Industries
+
+Ø Lahore Chemicals
+
+Ø Officers Academy
+
+Ø Izhar (pvt) Limited
+
+Ø National Engineers
+
+Ø Quid-e-Azam Library
+
+Ø Govt. College Township
+
+Ø Waheed Sons (Pvt) Ltd
+
+Ø Lahore Grammar School
+
+Ø PF Chang Resturent
+
+Ø Popular Recruiting Agency
+
+Ø Minhaj-ul-Quran University
+
+Ø Beaconhouse School Systems
+
+Ø Officers Open Academy (OOA)
+
+Ø US Apparel (Pvt) Ltd Pakistan
+
+Ø Directorate of Staff Development
+
+Ø Govt. College University Lahore.
+
+Ø Pakistan Atomic Energy Commission
+
+Ø MATRO Cash & Carry (Pvt) Pakistan
+
+Ø Irrigation Department Govt. of Punjab
+
+Ø Electrical Engineering Services (EES)
+
+Ø Forman Christian College University
+
+Ø Federal Government College G-10. Islamabad.
+
+Ø Water and Power Development Authority (WAPDA)
+
+Ø School of Mathematical Sciences. G.C University (SMS)
+
+Ø Population Welfare Department, Government of the Punjab. "
+
+
+
+Muslim Town Mor, Beside Jamia Asharfia,
+147- Ferozepur Road,
+Lahore. Ph: 042 - 37503264-5, 
+Mobile: 0300-4251833
+Email: infoscholars@yahoo.com
+
+
+## step 7
+we will push our code with an proper command.md file including all setup dependencies and commands, then we step forward to deploy at Railway or vercel with our local dtabase or github repo link only.
+
+## step 8
+add on option to write reviews and button for orders without sign in as acomments , admin will get notify through email and then reviews will automatically published at review page
+
+## Note
+Make sure
+1. all the UI us mobile responsive
+2. The UI should bein light mode, colorful with Modern images specially Printing and modern way to attract in all era.
+3. Use .env to store any information which can be later on easily be updated add a public folder to add prebuilt logo picture and chatbot code
+4. Conact the following "Sign Up & Send Your ID", "Start Your Orders" with Whatsapp if cancelled then system built in email app
+5. Colour should be changing specially review some colour back ground and text colours are same make them clear light with dark and Dark with light background
+6. Chatbot looks modern smart fit at screen and top first chat message should be in Arabic first greeting word: "Assalamualykum"
+not should fit at full screen minimize length in three quarters of screen for both desktop and mobile back ground should be light but not pure white
+7. You can add some beautifull colour or emoji to make website modern and unique printing touch

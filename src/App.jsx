@@ -4,10 +4,10 @@ import Footer from './components/Footer';
 import ChatButton from './components/ChatButton';
 import Home from './pages/Home';
 import About from './pages/About';
-import StartToday from './pages/StartToday';
-import Rates from './pages/Rates';
-import Reviews from './pages/Reviews';
-import Contact from './pages/Contact';
+import StartToday from './components/StartToday';
+import Rates from './components/Rates';
+import Reviews from './components/Reviews';
+import Contact from './components/Contact';
 
 function App() {
     return (
