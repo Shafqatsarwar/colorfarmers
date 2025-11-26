@@ -147,7 +147,7 @@ const Footer = () => {
                 <div className="container-custom px-4 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                         <p className="text-sm text-gray-400">
-                            © {currentYear} ColorFarmers - Scholars Photostat Centre. All rights reserved.
+                            © ExcellenceLinks 2025. All rights reserved.
                         </p>
                         <div className="flex space-x-6 text-sm">
                             <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>

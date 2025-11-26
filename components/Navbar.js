@@ -3,11 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@/contexts/AuthContext'
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false)
+    const [showUserMenu, setShowUserMenu] = useState(false)
     const pathname = usePathname()
+    const { user, logout, isAdmin } = useAuth()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,15 +22,21 @@ const Navbar = () => {
 
     useEffect(() => {
         setIsOpen(false)
+        setShowUserMenu(false)
     }, [pathname])
 
     const navLinks = [
         { name: 'Home', path: '/', icon: '🏠' },
         { name: 'About Us', path: '/about', icon: 'ℹ️' },
-        { name: 'Start Today', path: '/start-today', icon: '🚀' },
+        { name: 'Order Now', path: '/order', icon: '📦' },
         { name: 'Rates', path: '/rates', icon: '💰' },
         { name: 'Reviews', path: '/reviews', icon: '⭐' },
     ]
+
+    const handleLogout = () => {
+        logout()
+        setShowUserMenu(false)
+    }
 
     return (
         <nav
@@ -66,6 +75,60 @@ const Navbar = () => {
                                 <span>{link.name}</span>
                             </Link>
                         ))}
+
+                        {/* User Menu / Auth Buttons */}
+                        {user ? (
+                            <div className="relative ml-4">
+                                <button
+                                    onClick={() => setShowUserMenu(!showUserMenu)}
+                                    className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md hover:shadow-lg transition-all duration-300"
+                                >
+                                    <span>👤</span>
+                                    <span>{user.name}</span>
+                                    <span className="text-xs">▼</span>
+                                </button>
+
+                                {showUserMenu && (
+                                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl py-2 z-50">
+                                        {isAdmin() && (
+                                            <Link
+                                                href="/admin"
+                                                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                                            >
+                                                🔧 Admin Panel
+                                            </Link>
+                                        )}
+                                        <Link
+                                            href="/my-orders"
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
+                                        >
+                                            📦 My Orders
+                                        </Link>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 transition-colors"
+                                        >
+                                            🚪 Logout
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="flex items-center space-x-2 ml-4">
+                                <Link
+                                    href="/login"
+                                    className="px-4 py-2 rounded-lg font-medium text-primary-600 hover:bg-primary-50 transition-all duration-300"
+                                >
+                                    Login
+                                </Link>
+                                <Link
+                                    href="/signup"
+                                    className="px-4 py-2 rounded-lg font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md hover:shadow-lg transition-all duration-300"
+                                >
+                                    Sign Up
+                                </Link>
+                            </div>
+                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -93,7 +156,7 @@ const Navbar = () => {
 
                 {/* Mobile Menu */}
                 <div
-                    className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-4' : 'max-h-0'
+                    className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[600px] pb-4' : 'max-h-0'
                         }`}
                 >
                     <div className="px-4 space-y-2">
@@ -110,6 +173,56 @@ const Navbar = () => {
                                 <span>{link.name}</span>
                             </Link>
                         ))}
+
+                        {/* Mobile Auth Links */}
+                        {user ? (
+                            <>
+                                <div className="border-t-2 border-gray-200 my-2 pt-2">
+                                    <div className="px-4 py-2 text-sm text-gray-600">
+                                        Logged in as <strong>{user.name}</strong>
+                                    </div>
+                                </div>
+                                {isAdmin() && (
+                                    <Link
+                                        href="/admin"
+                                        className="block px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition-all duration-300 flex items-center space-x-3"
+                                    >
+                                        <span className="text-xl">🔧</span>
+                                        <span>Admin Panel</span>
+                                    </Link>
+                                )}
+                                <Link
+                                    href="/my-orders"
+                                    className="block px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition-all duration-300 flex items-center space-x-3"
+                                >
+                                    <span className="text-xl">📦</span>
+                                    <span>My Orders</span>
+                                </Link>
+                                <button
+                                    onClick={handleLogout}
+                                    className="w-full text-left px-4 py-3 rounded-lg font-medium text-red-600 hover:bg-red-50 transition-all duration-300 flex items-center space-x-3"
+                                >
+                                    <span className="text-xl">🚪</span>
+                                    <span>Logout</span>
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <div className="border-t-2 border-gray-200 my-2 pt-2" />
+                                <Link
+                                    href="/login"
+                                    className="block px-4 py-3 rounded-lg font-medium text-gray-700 hover:bg-gray-100 transition-all duration-300"
+                                >
+                                    🔐 Login
+                                </Link>
+                                <Link
+                                    href="/signup"
+                                    className="block px-4 py-3 rounded-lg font-medium bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-md"
+                                >
+                                    ✨ Sign Up
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>
