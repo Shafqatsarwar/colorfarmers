@@ -1,4 +1,4 @@
-import Rates from '@/components/pages/Rates'
+import Rates from '@/src/components/Rates'
 
 export const metadata = {
     title: 'Rates & Pricing - Affordable Printing Services | Scholars',
