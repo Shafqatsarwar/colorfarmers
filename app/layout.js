@@ -3,6 +3,9 @@ import { Inter, Outfit } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ChatButton from '@/components/ChatButton'
+import Notification from '@/components/Notification'
+import { AuthProvider } from '@/contexts/AuthContext'
+import { NotificationProvider } from '@/contexts/NotificationContext'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -24,13 +27,19 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
             <body className="min-h-screen flex flex-col">
-                <Navbar />
-                <main className="flex-grow">
-                    {children}
-                </main>
-                <Footer />
-                <ChatButton />
+                <AuthProvider>
+                    <NotificationProvider>
+                        <Navbar />
+                        <main className="flex-grow">
+                            {children}
+                        </main>
+                        <Footer />
+                        <ChatButton />
+                        <Notification />
+                    </NotificationProvider>
+                </AuthProvider>
             </body>
         </html>
     )
 }
+
