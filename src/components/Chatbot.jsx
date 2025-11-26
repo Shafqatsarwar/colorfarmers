@@ -48,7 +48,7 @@ const Chatbot = ({ onClose }) => {
             }
 
             const genAI = new GoogleGenerativeAI(apiKey);
-            const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
             // Create context with FAQ information
             const faqContext = faqs.map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`).join('\n\n');
@@ -72,7 +72,7 @@ Email: infoscholars@yahoo.com
 
 Here are our FAQs:
 ${faqContext}
-
+- Go for Websearch if user ask any General Information or a universal question.
 Please provide helpful, friendly, and accurate responses. Use emojis occasionally to make the conversation engaging. Keep responses concise but informative.`;
 
             const chat = model.startChat({
@@ -146,8 +146,8 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
                         >
                             <div
                                 className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.role === 'user'
-                                        ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white'
-                                        : 'bg-white text-gray-800 shadow-md'
+                                    ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white'
+                                    : 'bg-white text-gray-800 shadow-md'
                                     }`}
                             >
                                 <p className="text-sm whitespace-pre-wrap">{message.content}</p>
