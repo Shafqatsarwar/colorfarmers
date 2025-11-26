@@ -322,8 +322,8 @@ Email: infoscholars@yahoo.com
 we will push our code with an proper command.md file including all setup dependencies and commands, then we step forward to deploy at Railway or vercel with our local dtabase or github repo link only.
 
 ## step 8
-add on option to write reviews and button for orders without sign in as acomments , admin will get notify through email and then reviews will automatically published at review page
-
+- add on option to write reviews and button for orders without sign in as acomments , admin will get notify through email and then reviews will automatically published at review page
+- add like signup or order page with a form of name email product id(optional) contact details cit country etc, add alert message ssytem or notifactions to provided email if some 1 reviews or post an order etc add an admin panel to add products by article number id descriptions images to add in database and see orders reviews etc
 ## Note
 Make sure
 1. all the UI us mobile responsive
