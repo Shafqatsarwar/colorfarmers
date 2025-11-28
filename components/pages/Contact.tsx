@@ -34,7 +34,7 @@ const Contact = () => {
 
             success('Message sent successfully! We will get back to you soon.')
             setFormData({ name: '', email: '', subject: '', message: '' })
-        } catch (error) {
+        } catch (_error) {
             showError('Failed to send message. Please try again.')
         } finally {
             setLoading(false)
@@ -159,7 +159,7 @@ const Contact = () => {
                                         value={formData.message}
                                         onChange={handleChange}
                                         className="textarea-field"
-                                        rows="5"
+                                        rows={5}
                                         placeholder="How can we help you?"
                                         required
                                     />

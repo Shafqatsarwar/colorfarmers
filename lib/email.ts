@@ -1,6 +1,6 @@
 // Email notification system using EmailJS
 import emailjs from 'emailjs-com'
-import { Order, Review } from './db'
+import { Review } from './db'
 
 // Initialize EmailJS (these should be in .env.local)
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_id'

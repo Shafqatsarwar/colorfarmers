@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { getOrdersByUser, initializeDatabase, Order } from '@/lib/db'
@@ -11,6 +11,14 @@ const MyOrders = () => {
     const { user, isLoggedIn } = useAuth()
     const router = useRouter()
 
+    const loadOrders = useCallback(() => {
+        if (user) {
+            const userOrders = getOrdersByUser(user.id)
+            setOrders(userOrders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
+        }
+        setLoading(false)
+    }, [user])
+
     useEffect(() => {
         if (!isLoggedIn()) {
             router.push('/login')
@@ -19,15 +27,7 @@ const MyOrders = () => {
 
         initializeDatabase()
         loadOrders()
-    }, [user, isLoggedIn, router])
-
-    const loadOrders = () => {
-        if (user) {
-            const userOrders = getOrdersByUser(user.id)
-            setOrders(userOrders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
-        }
-        setLoading(false)
-    }
+    }, [isLoggedIn, loadOrders, router])
 
     const getStatusColor = (status: string) => {
         switch (status) {

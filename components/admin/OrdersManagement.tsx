@@ -21,7 +21,7 @@ const AdminOrders = () => {
         setOrders(allOrders.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()))
     }
 
-    const handleStatusChange = async (orderId: string, newStatus: string) => {
+    const handleStatusChange = async (orderId: string, newStatus: Order['status']) => {
         try {
             const order = ordersDB.update(orderId, { status: newStatus })
             if (order) {
@@ -29,7 +29,7 @@ const AdminOrders = () => {
                 success(`Order status updated to ${newStatus}!`)
                 loadOrders()
             }
-        } catch (error) {
+        } catch (_error) {
             showError('Failed to update order status.')
         }
     }
@@ -162,7 +162,7 @@ const AdminOrders = () => {
                                         <div className="flex flex-col space-y-2 lg:ml-4">
                                             <select
                                                 value={order.status}
-                                                onChange={(e) => handleStatusChange(order.id, e.target.value)}
+                                                onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
                                                 className="input-field text-sm"
                                             >
                                                 <option value="pending">Pending</option>

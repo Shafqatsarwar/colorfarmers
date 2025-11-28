@@ -15,14 +15,24 @@ export interface Product {
 
 export interface Order {
     id?: string
-    userId: string
+    userId?: string
     userName: string
-    userEmail: string
-    userPhone: string
-    items: OrderItem[]
-    totalAmount: number
+    userEmail?: string
+    userPhone?: string
+    email?: string
+    phone?: string
+    items?: OrderItem[]
+    totalAmount?: number
     status: 'pending' | 'processing' | 'completed' | 'cancelled'
     notes?: string
+    productName?: string
+    productId?: string
+    serviceType?: string
+    quantity?: number
+    city?: string
+    country?: string
+    address?: string
+    instructions?: string
     createdAt?: string
     updatedAt?: string
 }
@@ -39,6 +49,7 @@ export interface Review {
     userId?: string
     userName: string
     userEmail: string
+    productName?: string
     rating: number
     comment: string
     approved: boolean

@@ -53,7 +53,7 @@ const AdminProducts = () => {
 
             resetForm()
             loadProducts()
-        } catch (error) {
+        } catch (_error) {
             showError('Failed to save product. Please try again.')
         }
     }
@@ -168,7 +168,7 @@ const AdminProducts = () => {
                                     value={formData.description}
                                     onChange={handleChange}
                                     className="textarea-field"
-                                    rows="3"
+                                    rows={3}
                                     placeholder="Product description..."
                                     required
                                 />

@@ -271,7 +271,7 @@ const Order = () => {
                                             value={formData.instructions}
                                             onChange={handleChange}
                                             className="textarea-field"
-                                            rows="4"
+                                            rows={4}
                                             placeholder="Any special requirements or notes..."
                                         />
                                     </div>
@@ -327,7 +327,7 @@ const Order = () => {
                                             value={formData.address}
                                             onChange={handleChange}
                                             className="textarea-field"
-                                            rows="3"
+                                            rows={3}
                                             placeholder="Full delivery address (if delivery is required)"
                                         />
                                     </div>

@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Order from '@/components/pages/Order'
 
 export const metadata = {
@@ -6,5 +7,9 @@ export const metadata = {
 }
 
 export default function OrderPage() {
-    return <Order />
+    return (
+        <Suspense fallback={<div className="pt-20 min-h-screen flex items-center justify-center">Loading order form...</div>}>
+            <Order />
+        </Suspense>
+    )
 }

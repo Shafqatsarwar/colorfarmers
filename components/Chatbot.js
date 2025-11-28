@@ -50,7 +50,7 @@ const Chatbot = ({ onClose }) => {
             }
 
             const genAI = new GoogleGenerativeAI(apiKey)
-            const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
             // Create context with FAQ information
             const faqContext = faqs.map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`).join('\n\n')

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 const Reviews = () => {
-    const [reviews, setReviews] = useState([
+    const [reviews] = useState([
         {
             id: 1,
             name: 'Dr. Ahmed Hassan',

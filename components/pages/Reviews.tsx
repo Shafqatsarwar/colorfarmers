@@ -148,7 +148,7 @@ const Reviews = () => {
                                         value={newReview.comment}
                                         onChange={(e) => setNewReview({ ...newReview, comment: e.target.value })}
                                         className="textarea-field"
-                                        rows="4"
+                                        rows={4}
                                         placeholder="Share your experience with us..."
                                         required
                                     />

@@ -29,7 +29,7 @@ const AdminReviews = () => {
                 success('Review approved successfully!')
                 loadReviews()
             }
-        } catch (error) {
+        } catch (_error) {
             showError('Failed to approve review.')
         }
     }
