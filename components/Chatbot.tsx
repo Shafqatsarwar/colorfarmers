@@ -59,10 +59,17 @@ const Chatbot = ({ onClose }: ChatbotProps) => {
         try {
             const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY
 
+            console.log('🔑 API Key Check:', apiKey ? '✅ API Key Found' : '❌ API Key Missing')
+
             if (!apiKey) {
-                throw new Error('API key not configured')
+                throw new Error('GEMINI_API_KEY_NOT_CONFIGURED')
             }
 
+            if (apiKey.length < 20) {
+                throw new Error('GEMINI_API_KEY_INVALID')
+            }
+
+            console.log('🤖 Initializing Gemini AI with model: gemini-2.5-flash')
             const genAI = new GoogleGenerativeAI(apiKey)
             const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
@@ -104,18 +111,37 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
                 ],
             })
 
+            console.log('📤 Sending message to Gemini...')
             const result = await chat.sendMessage(input)
             const response = await result.response
             const text = response.text()
+            console.log('✅ Response received from Gemini')
 
             setMessages((prev) => [...prev, { role: 'assistant', content: text }])
-        } catch (error) {
-            console.error('Error:', error)
+        } catch (error: any) {
+            console.error('❌ Chatbot Error:', error)
+
+            let errorMessage = "I apologize, but I'm having trouble connecting right now. Please contact us directly at 0300-4251833 or infoscholars@yahoo.com for immediate assistance! 📞"
+
+            if (error.message === 'GEMINI_API_KEY_NOT_CONFIGURED') {
+                errorMessage = "⚠️ Chatbot configuration error: API key is missing. Please contact the administrator to configure the Gemini API key."
+                console.error('🔧 Fix: Add NEXT_PUBLIC_GEMINI_API_KEY to your .env.local file')
+            } else if (error.message === 'GEMINI_API_KEY_INVALID') {
+                errorMessage = "⚠️ Chatbot configuration error: API key appears to be invalid. Please contact the administrator."
+                console.error('🔧 Fix: Check that your NEXT_PUBLIC_GEMINI_API_KEY is correct')
+            } else if (error.message?.includes('API key not valid')) {
+                errorMessage = "⚠️ The API key is not valid. Please contact the administrator to update the Gemini API key."
+                console.error('🔧 Fix: Your API key is invalid. Get a new one from https://makersuite.google.com/app/apikey')
+            } else if (error.message?.includes('quota')) {
+                errorMessage = "⚠️ API quota exceeded. Please try again later or contact us directly at 0300-4251833."
+                console.error('🔧 Fix: API quota exceeded. Check your Google AI Studio quota.')
+            }
+
             setMessages((prev) => [
                 ...prev,
                 {
                     role: 'assistant',
-                    content: "I apologize, but I'm having trouble connecting right now. Please contact us directly at 0300-4251833 or infoscholars@yahoo.com for immediate assistance! 📞",
+                    content: errorMessage,
                 },
             ])
         } finally {
