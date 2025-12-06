@@ -35,7 +35,7 @@ const Chatbot = ({ onClose }: ChatbotProps) => {
         setMessages([
             {
                 role: 'assistant',
-                content: 'السلام علیکم (Assalamualaikum)! 👋\n\nWelcome to Scholars Photostat Centre! How can I help you today? Feel free to ask about our services, pricing, or anything else! 📄🖨️',
+                content: 'السلام علیکم! 👋\n\nWelcome to Scholars Photostat Centre! How can I help you? 📄',
             },
         ])
     }, [])
@@ -59,44 +59,26 @@ const Chatbot = ({ onClose }: ChatbotProps) => {
         try {
             const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY
 
-            console.log('🔑 API Key Check:', apiKey ? '✅ API Key Found' : '❌ API Key Missing')
-
             if (!apiKey) {
                 throw new Error('GEMINI_API_KEY_NOT_CONFIGURED')
             }
 
-            if (apiKey.length < 20) {
-                throw new Error('GEMINI_API_KEY_INVALID')
-            }
-
-            console.log('🤖 Initializing Gemini AI with model: gemini-2.5-flash')
             const genAI = new GoogleGenerativeAI(apiKey)
             const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
 
-            // Create context with FAQ information
             const faqContext = faqs.map((faq) => `Q: ${faq.question}\nA: ${faq.answer}`).join('\n\n')
 
-            const systemPrompt = `You are a helpful assistant for Scholars Photostat Centre, a professional printing and photocopy service in Lahore, Pakistan, established in 1987. 
+            const systemPrompt = `You are a helpful assistant for Scholars Photostat Centre in Lahore, Pakistan. 
 
-Our services include:
-- Photocopy (color & B/W)
-- Computer Printouts
-- Thesis Printing & Binding (Loop, Spiral, Ring, Tape, Hard, Cover Print, Embossing, Paper)
-- Wedding Cards, Birthday Cards, Event Cards
-- Custom Printing on Mugs, Plates, Tiles, Fabric, Cushions, T-Shirts, Caps
-- Large Format Printing (up to 44" x 200")
-- Scanning & Archiving Services
-- Educational Materials (Master, B.Sc, F.Sc, O/A-Levels)
-- Shields, Trophies, Certificates
+Our services: Photocopy, Printing, Thesis Binding, Wedding Cards, Custom Printing, Large Format Printing.
 
-Contact: Muslim Town Mor, Beside Jamia Asharfia, 147-Ferozepur Road, Lahore
-Phone: 042-37503264-5, Mobile: 0300-4251833
+Contact: 042-37503264-5, Mobile: 0300-4251833
 Email: ${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'infoscholars@yahoo.com'}
 
-Here are our FAQs:
+FAQs:
 ${faqContext}
 
-Please provide helpful, friendly, and accurate responses. Use emojis occasionally to make the conversation engaging. Keep responses concise but informative.`
+Provide helpful, friendly responses. Keep them concise.`
 
             const chat = model.startChat({
                 history: [
@@ -106,36 +88,20 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
                     },
                     {
                         role: 'model',
-                        parts: [{ text: 'I understand. I will help customers with information about Scholars Photostat Centre services, pricing, and general inquiries.' }],
+                        parts: [{ text: 'I understand. I will help customers with information about Scholars Photostat Centre.' }],
                     },
                 ],
             })
 
-            console.log('📤 Sending message to Gemini...')
             const result = await chat.sendMessage(input)
             const response = await result.response
             const text = response.text()
-            console.log('✅ Response received from Gemini')
 
             setMessages((prev) => [...prev, { role: 'assistant', content: text }])
         } catch (error: any) {
             console.error('❌ Chatbot Error:', error)
 
-            let errorMessage = "I apologize, but I'm having trouble connecting right now. Please contact us directly at 0300-4251833 or infoscholars@yahoo.com for immediate assistance! 📞"
-
-            if (error.message === 'GEMINI_API_KEY_NOT_CONFIGURED') {
-                errorMessage = "⚠️ Chatbot configuration error: API key is missing. Please contact the administrator to configure the Gemini API key."
-                console.error('🔧 Fix: Add NEXT_PUBLIC_GEMINI_API_KEY to your .env.local file')
-            } else if (error.message === 'GEMINI_API_KEY_INVALID') {
-                errorMessage = "⚠️ Chatbot configuration error: API key appears to be invalid. Please contact the administrator."
-                console.error('🔧 Fix: Check that your NEXT_PUBLIC_GEMINI_API_KEY is correct')
-            } else if (error.message?.includes('API key not valid')) {
-                errorMessage = "⚠️ The API key is not valid. Please contact the administrator to update the Gemini API key."
-                console.error('🔧 Fix: Your API key is invalid. Get a new one from https://makersuite.google.com/app/apikey')
-            } else if (error.message?.includes('quota')) {
-                errorMessage = "⚠️ API quota exceeded. Please try again later or contact us directly at 0300-4251833."
-                console.error('🔧 Fix: API quota exceeded. Check your Google AI Studio quota.')
-            }
+            let errorMessage = "I apologize, but I'm having trouble connecting. Please contact us at 0300-4251833! 📞"
 
             setMessages((prev) => [
                 ...prev,
@@ -157,49 +123,49 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
     }
 
     return (
-        <div className="fixed bottom-24 right-6 z-40 w-full max-w-md animate-slide-up">
-            {/* Chat Window - 3/4 screen height */}
-            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl shadow-2xl border border-gray-200 overflow-hidden" style={{ height: '75vh', maxHeight: '600px' }}>
+        <div className="fixed bottom-20 right-4 z-40 w-full max-w-sm animate-slide-up">
+            {/* Chat Window - Compact */}
+            <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl shadow-xl border border-gray-200 overflow-hidden" style={{ height: '450px' }}>
                 {/* Header */}
-                <div className="bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 text-white p-4 flex items-center justify-between">
-                    <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-xl">
+                <div className="bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 text-white p-3 flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-lg">
                             🤖
                         </div>
                         <div>
-                            <h3 className="font-semibold">Scholars Assistant</h3>
-                            <p className="text-xs text-white/80">Online • Ready to help</p>
+                            <h3 className="font-semibold text-sm">Scholars Assistant</h3>
+                            <p className="text-xs text-white/80">Online</p>
                         </div>
                     </div>
                     <button
                         onClick={onClose}
-                        className="w-8 h-8 hover:bg-white/20 rounded-full transition-colors flex items-center justify-center"
+                        className="w-7 h-7 hover:bg-white/20 rounded-full transition-colors flex items-center justify-center text-lg"
                     >
                         ✕
                     </button>
                 </div>
 
                 {/* Messages */}
-                <div className="h-[calc(100%-140px)] overflow-y-auto p-4 space-y-4">
+                <div className="h-[calc(100%-120px)] overflow-y-auto p-3 space-y-3">
                     {messages.map((message, index) => (
                         <div
                             key={index}
                             className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                         >
                             <div
-                                className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.role === 'user'
+                                className={`max-w-[85%] rounded-xl px-3 py-2 ${message.role === 'user'
                                     ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white'
-                                    : 'bg-white text-gray-800 shadow-md'
+                                    : 'bg-white text-gray-800 shadow-sm'
                                     }`}
                             >
-                                <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                                <p className="text-xs whitespace-pre-wrap">{message.content}</p>
                             </div>
                         </div>
                     ))}
                     {isLoading && (
                         <div className="flex justify-start">
-                            <div className="bg-white rounded-2xl px-4 py-3 shadow-md">
-                                <div className="flex space-x-2">
+                            <div className="bg-white rounded-xl px-3 py-2 shadow-sm">
+                                <div className="flex space-x-1">
                                     <div className="w-2 h-2 bg-primary-500 rounded-full animate-bounce"></div>
                                     <div className="w-2 h-2 bg-secondary-500 rounded-full animate-bounce animation-delay-200"></div>
                                     <div className="w-2 h-2 bg-accent-500 rounded-full animate-bounce animation-delay-400"></div>
@@ -211,7 +177,7 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
                 </div>
 
                 {/* Input */}
-                <div className="p-4 bg-white border-t border-gray-200">
+                <div className="p-3 bg-white border-t border-gray-200">
                     <div className="flex space-x-2">
                         <input
                             type="text"
@@ -219,13 +185,13 @@ Please provide helpful, friendly, and accurate responses. Use emojis occasionall
                             onChange={(e) => setInput(e.target.value)}
                             onKeyPress={handleKeyPress}
                             placeholder="Type your message..."
-                            className="flex-1 px-4 py-2 border-2 border-gray-200 rounded-full focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all text-sm"
+                            className="flex-1 px-3 py-2 border-2 border-gray-200 rounded-full focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all text-xs"
                             disabled={isLoading}
                         />
                         <button
                             onClick={handleSend}
                             disabled={isLoading || !input.trim()}
-                            className="w-10 h-10 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-9 h-9 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-full flex items-center justify-center hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm"
                         >
                             ➤
                         </button>
