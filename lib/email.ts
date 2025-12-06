@@ -24,6 +24,16 @@ interface EmailResponse {
 
 // Send email notification
 export const sendEmail = async (templateParams: EmailTemplateParams): Promise<EmailResponse> => {
+    // Check if EmailJS is configured
+    if (!EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID === 'service_id' ||
+        !EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID === 'template_id' ||
+        !EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === 'public_key') {
+        console.warn('⚠️ EmailJS not configured. Emails will not be sent.')
+        console.warn('📧 To enable emails, add EmailJS credentials to .env.local')
+        console.warn('See COMPLETE_SETUP_TESTING_GUIDE.md for setup instructions')
+        return { success: false, error: 'EmailJS not configured' }
+    }
+
     try {
         const response = await emailjs.send(
             EMAILJS_SERVICE_ID,
@@ -31,9 +41,11 @@ export const sendEmail = async (templateParams: EmailTemplateParams): Promise<Em
             templateParams,
             EMAILJS_PUBLIC_KEY
         )
+        console.log('✅ Email sent successfully')
         return { success: true, response }
     } catch (error) {
-        console.error('Email send error:', error)
+        console.error('❌ Email send error:', error)
+        console.error('Check your EmailJS configuration in .env.local')
         return { success: false, error }
     }
 }

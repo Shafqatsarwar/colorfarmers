@@ -112,9 +112,9 @@ const Rates = () => {
 
                                     <div className="space-y-3">
                                         {categoryProducts.length > 0 ? (
-                                            categoryProducts.map((product) => (
+                                            categoryProducts.map((product, index) => (
                                                 <div
-                                                    key={product.id}
+                                                    key={`${product.id}-${product.articleNumber}-${index}`}
                                                     className="flex justify-between items-center p-3 rounded-lg hover:bg-gray-50 transition-colors"
                                                 >
                                                     <div>

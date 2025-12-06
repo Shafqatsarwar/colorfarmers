@@ -5,7 +5,17 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-const AdminLayout = ({ children }: { children: ReactNode }) => {
+interface AdminLayoutProps {
+    children: ReactNode
+}
+
+interface AdminLink {
+    name: string
+    path: string
+    icon: string
+}
+
+const AdminLayout = ({ children }: AdminLayoutProps) => {
     const { user, isAdmin } = useAuth()
     const router = useRouter()
 
@@ -19,7 +29,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
         return null
     }
 
-    const adminLinks = [
+    const adminLinks: AdminLink[] = [
         { name: 'Dashboard', path: '/admin', icon: '📊' },
         { name: 'Products', path: '/admin/products', icon: '📦' },
         { name: 'Orders', path: '/admin/orders', icon: '🛒' },

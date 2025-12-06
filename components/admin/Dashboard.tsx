@@ -4,8 +4,26 @@ import { useState, useEffect } from 'react'
 import { ordersDB, reviewsDB, productsDB, usersDB, initializeDatabase, getOrdersByStatus, getPendingReviews } from '@/lib/db'
 import AdminLayout from '@/components/admin/AdminLayout'
 
+interface Stats {
+    totalOrders: number
+    pendingOrders: number
+    completedOrders: number
+    totalProducts: number
+    totalReviews: number
+    pendingReviews: number
+    totalUsers: number
+}
+
+interface StatCard {
+    title: string
+    value: number
+    icon: string
+    color: string
+    link: string
+}
+
 const AdminDashboard = () => {
-    const [stats, setStats] = useState({
+    const [stats, setStats] = useState<Stats>({
         totalOrders: 0,
         pendingOrders: 0,
         completedOrders: 0,
@@ -40,7 +58,7 @@ const AdminDashboard = () => {
         })
     }
 
-    const statCards = [
+    const statCards: StatCard[] = [
         {
             title: 'Total Orders',
             value: stats.totalOrders,
