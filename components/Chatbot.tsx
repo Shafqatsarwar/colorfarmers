@@ -78,7 +78,17 @@ Email: ${process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'infoscholars@yahoo.com'}
 FAQs:
 ${faqContext}
 
-Provide helpful, friendly responses. Keep them concise.`
+IMPORTANT INSTRUCTIONS:
+1. For questions about our services, pricing, location, or printing - answer directly and helpfully.
+2. For general knowledge questions (like "What is AI?", "What is solar system?", "New books", etc.) - politely inform the user that you're specialized in helping with Scholars Photostat Centre services, and suggest they use Google or a web search for general information.
+3. Always be friendly and helpful, even when redirecting to web search.
+4. Keep responses concise and clear.
+5. ALWAYS provide a response - never leave output empty.
+
+Example responses for general questions:
+- "I'm specialized in helping with Scholars Photostat Centre services. For general information about [topic], I'd recommend using Google or a web search engine. However, if you need any printing or photocopying services, I'm here to help! 😊"
+
+Provide helpful, friendly responses.`
 
             const chat = model.startChat({
                 history: [
@@ -93,15 +103,32 @@ Provide helpful, friendly responses. Keep them concise.`
                 ],
             })
 
+            console.log('📤 Sending message to Gemini...')
             const result = await chat.sendMessage(input)
             const response = await result.response
             const text = response.text()
+
+            // Check if response is empty
+            if (!text || text.trim().length === 0) {
+                throw new Error('EMPTY_RESPONSE')
+            }
+
+            console.log('✅ Response received from Gemini')
 
             setMessages((prev) => [...prev, { role: 'assistant', content: text }])
         } catch (error: any) {
             console.error('❌ Chatbot Error:', error)
 
             let errorMessage = "I apologize, but I'm having trouble connecting. Please contact us at 0300-4251833! 📞"
+
+            // Handle specific error types
+            if (error.message === 'EMPTY_RESPONSE') {
+                errorMessage = "I apologize, I didn't quite catch that. Could you please rephrase your question? Or contact us directly at 0300-4251833! 📞"
+            } else if (error.message?.includes('output text or tool calls')) {
+                errorMessage = "I'm having a moment! 😅 Please try asking your question again, or contact us at 0300-4251833 for immediate help! 📞"
+            } else if (error.message?.includes('quota')) {
+                errorMessage = "⚠️ Our chat service is temporarily busy. Please contact us at 0300-4251833 or infoscholars@yahoo.com! 📞"
+            }
 
             setMessages((prev) => [
                 ...prev,
